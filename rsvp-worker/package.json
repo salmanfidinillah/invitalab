@@ -1,0 +1,16 @@
+{
+  "name": "invitalab-rsvp-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test",
+    "db:migrate:local": "wrangler d1 migrations apply invitalab-rsvp --local",
+    "db:migrate:remote": "wrangler d1 migrations apply invitalab-rsvp --remote",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

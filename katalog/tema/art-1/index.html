@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#f4f0e8">
+  <meta name="color-scheme" content="light only">
+  <title>The Wedding of Bagus &amp; Icha | Invitalab</title>
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="art-1.css">
+  <script src="../../template-utils.js" defer></script>
+  <script src="../../rsvp/config.js" defer></script>
+  <script src="../../rsvp/client.js" defer></script>
+  <script src="art-1.js" defer></script>
+</head>
+<body class="cover-open" data-template-mode="demo">
+  <audio id="bgMusic" src="nadzif.mp3" preload="none" loop></audio>
+
+  <div class="invitation-cover" id="invitationCover" aria-labelledby="coverTitle">
+    <div class="cover-art" aria-hidden="true">
+      <img src="img/Asset-8.png" alt="" width="703" height="704" decoding="async">
+      <span class="cover-orbit orbit-one"></span>
+      <span class="cover-orbit orbit-two"></span>
+      <span class="cover-mark">B · I</span>
+    </div>
+    <div class="cover-copy">
+      <span class="kicker">The wedding celebration</span>
+      <h1 id="coverTitle"><span>Bagus</span><i>&amp;</i><span>Icha</span></h1>
+      <p class="cover-date">Minggu, 12 Maret 2028 · Surakarta</p>
+      <div class="guest-card">
+        <small>Kepada Bapak/Ibu/Saudara/i</small>
+        <strong id="nama-tamu">Tamu Undangan</strong>
+      </div>
+      <button class="primary-button cover-button" id="openInvitation" type="button">
+        <span>Buka undangan</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg>
+      </button>
+      <p class="cover-hint">Aktifkan suara untuk pengalaman terbaik</p>
+    </div>
+  </div>
+
+  <header class="topbar interface-control" id="topbar">
+    <a class="monogram" href="#home" aria-label="Kembali ke bagian pembuka">B<span>&amp;</span>I</a>
+    <nav aria-label="Navigasi undangan">
+      <a href="#couple">Mempelai</a>
+      <a href="#story">Cerita</a>
+      <a href="#event">Acara</a>
+      <a href="#wish">RSVP</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="icon-button" id="audioBtn" type="button" aria-label="Putar atau jeda musik">
+        <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/><path d="M17 9.5a4 4 0 0 1 0 5M19.5 7a7 7 0 0 1 0 10"/></svg>
+        <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"/><path d="m17 10 4 4m0-4-4 4"/></svg>
+      </button>
+      <button class="icon-button" id="fullscreenBtn" type="button" aria-label="Aktifkan atau keluar dari layar penuh">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow glow-one" aria-hidden="true"></div>
+      <div class="hero-glow glow-two" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <span class="kicker">Ngunduh mantu · 12.03.2028</span>
+        <h1>Bagus <i>&amp;</i><br>Icha</h1>
+        <p>Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan menjadi bagian dari hari yang kami nantikan.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#event"><span>Lihat detail acara</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg></a>
+          <a class="quiet-link" href="#couple">Kenal lebih dekat <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-portrait reveal reveal-delay" data-parallax>
+        <div class="portrait-frame">
+          <img src="img/Asset-8.png" alt="Bagus dan Icha" width="703" height="704" fetchpriority="high" decoding="async">
+        </div>
+        <div class="portrait-note note-date"><small>Maret</small><strong>12</strong><span>2028</span></div>
+        <div class="portrait-note note-place"><span>Surakarta</span><small>Jawa Tengah</small></div>
+      </div>
+      <a class="scroll-cue" href="#couple" aria-label="Gulir ke profil mempelai"><span></span>Scroll to discover</a>
+    </section>
+
+    <section class="section couple-section" id="couple">
+      <div class="section-shell">
+        <div class="section-heading centered reveal">
+          <span class="kicker">Dua cerita, satu perjalanan</span>
+          <h2>Dengan rahmat-Nya,<br><i>kami melangkah bersama.</i></h2>
+          <p>Assalamu'alaikum Wr. Wb. Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, insyaaAllah kami akan menyelenggarakan acara pernikahan.</p>
+        </div>
+        <div class="couple-grid">
+          <article class="person-card reveal">
+            <div class="person-photo"><img src="img/cowo.png" alt="Bagus Mutiara Fajar" width="704" height="703" loading="lazy" decoding="async"></div>
+            <div class="person-copy">
+              <span>Putra</span>
+              <h3>Bagus</h3>
+              <strong>Bagus Mutiara Fajar, S.E.</strong>
+              <p>Putra kedua Bapak Dul Mutolib, S.Pd. &amp; Ibu Haryanti</p>
+              <a href="https://www.instagram.com/bagus_n/" target="_blank" rel="noopener noreferrer" data-demo-link="true">@bagus_n <span>↗</span></a>
+            </div>
+          </article>
+          <div class="couple-amp reveal" aria-hidden="true"><span>&amp;</span></div>
+          <article class="person-card person-card-reverse reveal reveal-delay">
+            <div class="person-photo"><img src="img/cewek-1.png" alt="Galuh Annisa Kusumawardani" width="704" height="703" loading="lazy" decoding="async"></div>
+            <div class="person-copy">
+              <span>Putri</span>
+              <h3>Icha</h3>
+              <strong>Galuh Annisa Kusumawardani, S.K.M.</strong>
+              <p>Putri kedua Bapak Harnoto &amp; Ibu Sri Hartini</p>
+              <a href="https://www.instagram.com/aprilinadyah/" target="_blank" rel="noopener noreferrer" data-demo-link="true">@aprilinadyah <span>↗</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section" id="story">
+      <div class="section-shell story-layout">
+        <div class="story-intro reveal">
+          <span class="kicker">Our little timeline</span>
+          <h2>Kisah yang tumbuh<br><i>tanpa tergesa.</i></h2>
+          <p>Bukan tentang seberapa cepat kami sampai, tetapi tentang bagaimana kami bertumbuh di sepanjang perjalanan.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal"><span class="timeline-year">2021</span><div><small>01 · Pertemuan</small><h3>Awal bertemu</h3><p>Pertemuan kami berawal dari ketidaksengajaan di sebuah acara reuni. Obrolan ringan kemudian membuka banyak kesamaan yang membuat kami nyaman.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-year">2022</span><div><small>02 · Perjalanan</small><h3>Saling mengenal</h3><p>Kedekatan berkembang menjadi komitmen. Kami belajar saling memahami, menguatkan, dan memberi ruang bagi langkah satu sama lain.</p></div></article>
+          <article class="timeline-item reveal"><span class="timeline-year">2023</span><div><small>03 · Keputusan</small><h3>Menuju pernikahan</h3><p>Dengan keyakinan hati serta restu kedua keluarga, kami memutuskan untuk mengikat janji dan melangkah ke perjalanan yang baru.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section event-section" id="event">
+      <div class="section-shell">
+        <div class="event-heading reveal">
+          <div><span class="kicker light">Save the date</span><h2>Satu malam,<br><i>seribu kenangan.</i></h2></div>
+          <p>Merupakan kehormatan bagi kami apabila Anda berkenan hadir dan merayakan momen ini bersama.</p>
+        </div>
+        <div class="countdown reveal" aria-label="Hitung mundur menuju acara">
+          <div><strong id="days">00</strong><span>Hari</span></div><i></i>
+          <div><strong id="hours">00</strong><span>Jam</span></div><i></i>
+          <div><strong id="minutes">00</strong><span>Menit</span></div><i></i>
+          <div><strong id="seconds">00</strong><span>Detik</span></div>
+        </div>
+        <article class="event-card reveal">
+          <div class="event-date"><span>Minggu</span><strong>12</strong><span>Maret 2028</span></div>
+          <div class="event-detail"><small>Ngunduh mantu</small><h3>Hotel Dana Solo</h3><p>19.00 WIB — selesai<br>Sriwedari, Kota Surakarta, Jawa Tengah</p><div class="button-row"><a class="secondary-button" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Dana%20Solo" target="_blank" rel="noopener noreferrer">Buka Maps <span>↗</span></a><a class="secondary-button filled" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ngunduh%20Mantu%20Bagus%20%26%20Icha&amp;dates=20280312T190000/20280312T220000&amp;details=Acara%20pernikahan%20Bagus%20dan%20Icha&amp;location=Hotel%20Dana%20Solo" target="_blank" rel="noopener noreferrer">Simpan tanggal <span>＋</span></a></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section location-section" id="map">
+      <div class="section-shell location-grid">
+        <div class="location-copy reveal">
+          <span class="kicker">Temukan jalannya</span>
+          <h2>Sampai bertemu<br><i>di Surakarta.</i></h2>
+          <p>Hotel Dana Solo berada di kawasan Sriwedari. Gunakan peta untuk membuka petunjuk arah dari lokasi Anda.</p>
+          <a class="quiet-link" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel%20Dana%20Solo" target="_blank" rel="noopener noreferrer">Buka di Google Maps <span>↗</span></a>
+        </div>
+        <div class="map-frame reveal reveal-delay">
+          <iframe title="Peta lokasi Hotel Dana Solo" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.083460670921!2d110.8142714!3d-7.5659223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a166299b6bb7b%3A0x6b4f74ebf4a6144e!2sHotel%20Dana%20Solo!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <span class="map-label"><b>Hotel Dana Solo</b><small>Surakarta · Jawa Tengah</small></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section live-section" id="live">
+      <div class="section-shell">
+        <article class="live-card reveal">
+          <div class="live-icon" aria-hidden="true"><span></span><svg viewBox="0 0 24 24"><path d="m9 8 7 4-7 4V8Z"/></svg></div>
+          <div><span class="kicker">Live streaming</span><h2>Tetap dekat,<br><i>meski dari jauh.</i></h2><p>Saksikan momen bahagia kami secara virtual melalui siaran langsung Instagram.</p></div>
+          <a class="secondary-button filled" href="https://instagram.com/naufal_n" target="_blank" rel="noopener noreferrer" data-demo-link="true">Gabung live <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section rsvp-section" id="wish">
+      <div class="section-shell rsvp-layout">
+        <div class="rsvp-intro reveal">
+          <span class="kicker">RSVP &amp; wishes</span>
+          <h2>Kabar dari Anda<br><i>berarti bagi kami.</i></h2>
+          <p>Konfirmasikan kehadiran dan tinggalkan doa terbaik untuk perjalanan baru kami.</p>
+          <div class="attendance-summary" aria-label="Contoh ringkasan kehadiran"><div><strong>3</strong><span>Hadir</span></div><div><strong>0</strong><span>Tidak hadir</span></div><div><strong>0</strong><span>Masih ragu</span></div></div>
+        </div>
+        <div class="rsvp-panel reveal reveal-delay">
+          <form data-invitalab-rsvp data-event-id="demo-art-1">
+            <div class="field"><label for="guestName">Nama</label><input id="guestName" name="name" type="text" minlength="2" maxlength="80" autocomplete="name" placeholder="Nama lengkap" required></div>
+            <div class="form-row"><div class="field"><label for="guestStatus">Kehadiran</label><select id="guestStatus" name="attendance" required><option value="" selected disabled>Pilih status</option><option value="hadir">Hadir</option><option value="tidak_hadir">Tidak hadir</option><option value="ragu">Masih ragu</option></select></div><div class="field"><label for="guestCount">Jumlah tamu</label><select id="guestCount" name="guestCount"><option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option></select></div></div>
+            <div class="field"><label for="guestMessage">Ucapan &amp; doa</label><textarea id="guestMessage" name="message" rows="4" maxlength="500" placeholder="Tulis ucapan terbaik Anda"></textarea></div>
+            <button class="primary-button form-button" type="submit"><span>Kirim konfirmasi</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg></button>
+          </form>
+          <div class="sample-wish"><span>Contoh ucapan</span><blockquote>“Semoga dilancarkan sampai hari bahagia dan menjadi keluarga yang selalu penuh ketenangan.”</blockquote><small>— Desi</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gift-section" id="gift">
+      <div class="section-shell gift-layout">
+        <div class="gift-copy reveal"><span class="kicker light">Wedding gift</span><h2>Kehadiran dan doa Anda<br><i>sudah lebih dari cukup.</i></h2><p>Namun apabila ingin menyampaikan tanda kasih, Anda dapat menggunakan informasi berikut.</p></div>
+        <article class="bank-card reveal reveal-delay"><div class="bank-top"><span>BCA</span><small>Wedding gift</small></div><div class="bank-chip" aria-hidden="true"></div><strong>1245 521</strong><p>a.n. Bagus Mutiara Fajar</p><button id="copyAccount" type="button" data-copy="1245521">Salin nomor <span>↗</span></button><small class="copy-feedback" id="copyFeedback" role="status" aria-live="polite"></small></article>
+      </div>
+      <div class="verse section-shell reveal"><blockquote>“Dan di antara tanda-tanda kekuasaan-Nya, Dia menciptakan untukmu pasangan hidup agar kamu mendapat ketenangan hati dan dijadikan-Nya kasih sayang di antara kamu.”</blockquote><span>Q.S. Ar-Rum · 21</span></div>
+    </section>
+
+    <section class="closing-section" id="closing">
+      <div class="closing-image"><img src="img/Asset-8.png" alt="Bagus dan Icha" width="703" height="704" loading="lazy" decoding="async"></div>
+      <div class="closing-copy reveal"><span class="kicker light">Terima kasih</span><h2>Sampai bertemu<br><i>di hari bahagia kami.</i></h2><p>Merupakan suatu kehormatan apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p><strong>Bagus <i>&amp;</i> Icha</strong><small>© 2026 Invitalab · Preview template Art 1</small></div>
+    </section>
+  </main>
+
+  <nav class="bottom-dock interface-control" aria-label="Navigasi cepat">
+    <a class="dock-item active" href="#home" data-section="home" aria-label="Beranda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 10 8-7 8 7v10h-6v-6h-4v6H4V10Z"/></svg><span>Home</span></a>
+    <a class="dock-item" href="#couple" data-section="couple" aria-label="Mempelai"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.5 20c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M10.5 20c.4-4 2.2-6 5.5-6s5.1 2 5.5 6"/></svg><span>Mempelai</span></a>
+    <a class="dock-item" href="#event" data-section="event" aria-label="Acara"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18"/></svg><span>Acara</span></a>
+    <a class="dock-item" href="#map" data-section="map" aria-label="Lokasi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Lokasi</span></a>
+    <a class="dock-item" href="#wish" data-section="wish" aria-label="RSVP"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h9a4 4 0 0 1 4 4v8Z"/><path d="M8 9h8m-8 4h5"/></svg><span>RSVP</span></a>
+  </nav>
+</body>
+</html>

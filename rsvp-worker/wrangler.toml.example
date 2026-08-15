@@ -1,0 +1,12 @@
+name = "invitalab-rsvp"
+main = "src/index.js"
+compatibility_date = "2026-08-10"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "invitalab-rsvp"
+database_id = "PASTE_D1_DATABASE_ID_HERE"
+
+[vars]
+# Pisahkan beberapa origin dengan koma. Jangan gunakan tanda * untuk produksi.
+ALLOWED_ORIGINS = "https://domain-undanganmu.com,http://localhost:8788"

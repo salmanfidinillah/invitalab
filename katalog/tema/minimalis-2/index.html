@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <title>The Wedding of Davin & Alifia | Invitalab</title>
+    
+    <meta name="color-scheme" content="light only">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        if (window.tailwind) tailwind.config = {
+            darkMode: 'class', // Memaksa Tailwind mengabaikan dark mode bawaan sistem OS
+        }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+
+    <style>
+        /* Memaksa browser UI (scrollbar, input, dll) tetap terang */
+        :root {
+            color-scheme: light only;
+        }
+
+        /* Konfigurasi Font Custom */
+        .font-serif-custom { font-family: 'Cormorant Garamond', serif; }
+        .font-sans-custom { font-family: 'Montserrat', sans-serif; }
+        .font-arabic { font-family: 'Amiri', serif; } /* Class baru untuk font Arab */
+        
+        /* Memaksa Light Mode pada body */
+        body {
+            background-color: #f6f5f1; /* Warna dasar kertas */
+            color: #4b5563; /* Text abu-abu gelap */
+        }
+
+        /* Animasi Cover Buka Undangan */
+        #cover-screen {
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+        .hide-cover {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Custom Scrollbar untuk kotak ucapan */
+        .scroll-ucapan::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-ucapan::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scroll-ucapan::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        /* =========================================================
+         🖼️ 1. PANDUAN MENGGANTI BACKGROUND UTAMA (KERTAS TEKSTUR)
+         =========================================================
+         Background utama diaktifkan kembali.
+        */
+        .bg-texture-main {
+            background-image: url('img/6146af1600076ec227dc9c8219d6545a.jpg'); 
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* --- TAMBAHAN: CSS UNTUK ANIMASI MORPH SCROLL --- */
+        .morph-element {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: opacity 1s ease-out, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        
+        .morph-element.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        /* ------------------------------------------------ */
+    </style>
+</head>
+<body data-template-mode="demo" id="main-body" class="font-sans-custom antialiased bg-texture-main overflow-x-hidden" style="overflow-y: hidden;">
+
+    <audio preload="none" id="bg-music" loop>
+        <source src="../../musik/invitalab-ambient.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div id="cover-screen" class="fixed inset-0 z-50 bg-[#f6f5f1] bg-texture-main flex flex-col items-center justify-center text-center min-h-screen">
+        <div class="space-y-6">
+            <p class="text-sm tracking-[0.2em] text-gray-500 uppercase">The Wedding Of</p>
+            
+            <div class="font-serif-custom text-5xl md:text-7xl text-gray-700 space-y-2">
+                <h1>Davin</h1>
+                <div class="flex items-center justify-center gap-4 py-2">
+                    <div class="h-px bg-gray-400 w-12 md:w-20"></div>
+                    <span class="text-3xl">&</span>
+                    <div class="h-px bg-gray-400 w-12 md:w-20"></div>
+                </div>
+                <h1>Alifia</h1>
+            </div>
+            
+            <p class="text-xs md:text-sm tracking-widest text-gray-500 mt-8 uppercase">Sasana Praja | Januari 2027</p>
+
+            <div class="text-sm text-gray-600">
+                <p class="text-xs mb-1">Kepada Yth.</p>
+                <p id="nama-tamu" class="font-medium">Tamu Undangan</p>
+            </div>
+            
+            <div class="mt-12">
+                <button type="button" onclick="bukaUndangan()" class="border border-gray-400 text-gray-600 px-6 py-2 rounded-full text-sm hover:bg-gray-100 transition duration-300 flex items-center gap-2 mx-auto">
+                    <i class="fa-regular fa-envelope"></i> Buka Undangan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+            
+            <section id="profil" class="py-16 px-6 text-center morph-element">
+                
+                <div class="flex justify-center mb-8 opacity-50">
+                    </div>
+
+                <div class="mb-8">
+                    <h2 class="font-arabic text-3xl md:text-4xl text-gray-700 mb-6 font-bold" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</h2>
+                    
+                    <p class="text-xs md:text-sm text-gray-500 leading-relaxed max-w-2xl mx-auto">
+                        Assalamu'alaikum wa rahmatullahi wa barakatuh. Segala puji bagi Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Kami bermaksud mengundang Bapak / Ibu / Saudara / i dalam acara kami:
+                    </p>
+                </div>
+
+                <div class="flex justify-center mb-10">
+                    <div class="w-48 h-48 bg-gray-200 rounded-full flex items-center justify-center text-gray-400 text-sm border-4 border-white shadow-md overflow-hidden">
+                        <img src="img/82dbc3c9ba74f17c1220d6cb4e8124b9.png" alt="Foto Mempelai" class="w-full h-full object-cover" width="758" height="860" decoding="async">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+                    <div>
+                        <h2 class="font-serif-custom text-2xl mb-2 text-gray-700">- Davin Agus Priyanto -</h2>
+                        <p class="text-xs text-gray-500 mb-1">Putra Pertama dari :</p>
+                        <p class="text-sm font-medium text-gray-600 mb-2">Bapak Rahman & Ibu Desi Tri</p>
+                        <p class="text-xs text-gray-500 mb-4">Jl. Pandanaran, Semarang, Jawa Tengah</p>
+                        <a data-demo-link="true" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1 text-xs text-gray-500 hover:bg-gray-50 transition">
+                            <i class="fa-brands fa-instagram"></i> INSTAGRAM
+                        </a>
+                    </div>
+                    
+                    <div class="hidden md:flex justify-center">
+                        <i class="fa-regular fa-heart text-3xl text-gray-400"></i>
+                    </div>
+
+                    <div>
+                        <h2 class="font-serif-custom text-2xl mb-2 text-gray-700">- Alifia Putri Pamedar -</h2>
+                        <p class="text-xs text-gray-500 mb-1">Putri Pertama dari :</p>
+                        <p class="text-sm font-medium text-gray-600 mb-2">Bapak Subhkan & Ibu Diani</p>
+                        <p class="text-xs text-gray-500 mb-4">Jl. Siliwangi No.12, Semarang, Jawa Tengah</p>
+                        <a href="https://www.instagram.com/alifia_11/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-4 py-1 text-xs text-gray-500 hover:bg-gray-50 transition">
+                            <i class="fa-brands fa-instagram"></i> INSTAGRAM
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 w-3/4 mx-auto morph-element">
+
+            <section class="py-16 px-6 text-center bg-gray-50/50 morph-element">
+                
+                <div class="flex justify-center mb-6 opacity-50">
+                    </div>
+                
+                <p class="text-sm text-gray-500 mb-10">Yang InsyaAllah akan diselenggarakan pada :</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+                    <div>
+                        <h3 class="font-serif-custom text-2xl text-gray-700 border-b border-gray-300 inline-block px-4 pb-2 mb-4">Akad Nikah</h3>
+                        <div class="mb-4 text-gray-400"><i class="fa-solid fa-location-dot"></i></div>
+                        <h4 class="font-medium text-gray-700 mb-1">Masjid An-Nur</h4>
+                        <p class="text-xs text-gray-500 mb-4">Jl. Pandanaran, Semarang, Jawa Tengah</p>
+                        <p class="text-sm text-gray-600 mb-1">Jumat, 22 Januari 2027</p>
+                        <p class="text-sm text-gray-600 mb-6">08.00 - 09.00 WIB</p>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Masjid%20An-Nur%2C%20Jl.%20Pandanaran%2C%20Semarang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-1.5 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm bg-white">
+                            <i class="fa-solid fa-location-dot"></i> OPEN MAPS
+                        </a>
+                    </div>
+
+                    <div>
+                        <h3 class="font-serif-custom text-2xl text-gray-700 border-b border-gray-300 inline-block px-4 pb-2 mb-4">Resepsi</h3>
+                        <div class="mb-4 text-gray-400"><i class="fa-solid fa-location-dot"></i></div>
+                        <h4 class="font-medium text-gray-700 mb-1">Rumah Mempelai Wanita</h4>
+                        <p class="text-xs text-gray-500 mb-4">Jl. Siliwangi No.12, Semarang, Jawa Tengah</p>
+                        <p class="text-sm text-gray-600 mb-1">Jumat, 22 Januari 2027</p>
+                        <p class="text-sm text-gray-600 mb-6">09.00 - 17.00 WIB</p>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Jl.%20Siliwangi%20No.%2012%2C%20Semarang" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-1.5 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm bg-white">
+                            <i class="fa-solid fa-location-dot"></i> OPEN MAPS
+                        </a>
+                    </div>
+                </div>
+
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=The%20Wedding%20of%20Davin%20%26%20Alifia&amp;dates=20270122T080000/20270122T170000&amp;details=Akad%20dan%20resepsi%20pernikahan%20Davin%20dan%20Alifia&amp;location=Semarang%2C%20Jawa%20Tengah" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-6 py-2 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm mb-10 bg-white">
+                    <i class="fa-regular fa-calendar-check"></i> SIMPAN TANGGAL
+                </a>
+
+                <p class="text-gray-500 mb-6 text-sm">- Hitung Mundur Acara -</p>
+                <div class="flex justify-center gap-3 md:gap-4">
+                    <div class="bg-gray-500 text-white rounded-xl w-16 h-20 md:w-20 md:h-24 flex flex-col items-center justify-center shadow-md">
+                        <span id="days" class="text-2xl md:text-3xl font-light">00</span>
+                        <span class="text-[10px] md:text-xs mt-1">Hari</span>
+                    </div>
+                    <div class="bg-gray-500 text-white rounded-xl w-16 h-20 md:w-20 md:h-24 flex flex-col items-center justify-center shadow-md">
+                        <span id="hours" class="text-2xl md:text-3xl font-light">00</span>
+                        <span class="text-[10px] md:text-xs mt-1">Jam</span>
+                    </div>
+                    <div class="bg-gray-500 text-white rounded-xl w-16 h-20 md:w-20 md:h-24 flex flex-col items-center justify-center shadow-md">
+                        <span id="minutes" class="text-2xl md:text-3xl font-light">00</span>
+                        <span class="text-[10px] md:text-xs mt-1">Menit</span>
+                    </div>
+                    <div class="bg-gray-500 text-white rounded-xl w-16 h-20 md:w-20 md:h-24 flex flex-col items-center justify-center shadow-md">
+                        <span id="seconds" class="text-2xl md:text-3xl font-light">00</span>
+                        <span class="text-[10px] md:text-xs mt-1">Detik</span>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 w-3/4 mx-auto morph-element">
+
+            <section class="py-16 px-6 text-center morph-element">
+                
+                <div class="flex justify-center mb-6 opacity-50">
+                    </div>
+
+                <p class="text-gray-500 mb-6 text-sm">- Live Streaming -</p>
+                <p class="text-xs md:text-sm text-gray-500 max-w-lg mx-auto mb-8 leading-relaxed">
+                    Temu kami secara virtual untuk menyaksikan acara pernikahan kami yang insyaaAllah akan disiarkan langsung melalui akun instagram kami berikut ini.
+                </p>
+                
+                <div class="flex justify-center gap-4 mb-6">
+                    <a href="https://www.instagram.com/alifia_11/" target="_blank" rel="noopener noreferrer" class="w-16 h-12 bg-gray-500 text-white rounded-2xl flex items-center justify-center text-3xl hover:bg-gray-600 transition" aria-label="Instagram Alifia">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a data-demo-link="true" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="w-16 h-12 bg-gray-500 text-white rounded-2xl flex items-center justify-center text-3xl hover:bg-gray-600 transition" aria-label="Live streaming YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+
+                <a href="https://www.instagram.com/alifia_11/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-6 py-2 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm mb-6 bg-white">
+                    <i class="fa-solid fa-video"></i> JOIN LIVE
+                </a>
+
+                <div class="text-sm text-gray-600 space-y-2">
+                    <p>Instagram : Alifia_11</p>
+                    <p>Zoom Meeting ID : ABCDE12345</p>
+                    <p>Password : 123456</p>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 w-3/4 mx-auto morph-element">
+
+            <section class="py-16 px-6 bg-gray-50/50 morph-element">
+                
+                <div class="flex justify-center mb-6 opacity-50">
+                    </div>
+                
+                <p class="text-center text-gray-500 mb-12 text-sm">- Kisah Ta'aruf Davin & Alifia -</p>
+
+                <div class="max-w-3xl mx-auto">
+                    <div class="flex flex-col md:flex-row items-center mb-12 text-center md:text-left">
+                        <div class="md:w-1/2 md:pr-10 mb-4 md:mb-0">
+                            <h3 class="text-xl md:text-2xl text-gray-700 font-medium mb-2 border-b-2 border-gray-300 inline-block md:block w-auto pb-1">24 OKTOBER 2022</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed text-justify md:text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-10 text-center md:text-right">
+                            <h2 class="font-serif-custom text-3xl md:text-4xl text-gray-600">Ta'aruf</h2>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row-reverse items-center mb-12 text-center md:text-left">
+                        <div class="md:w-1/2 md:pl-10 mb-4 md:mb-0">
+                            <h3 class="text-xl md:text-2xl text-gray-700 font-medium mb-2 border-b-2 border-gray-300 inline-block md:block w-auto pb-1 text-center md:text-right">15 NOVEMBER 2022</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed text-justify md:text-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="md:w-1/2 md:pr-10 text-center md:text-left">
+                            <h2 class="font-serif-custom text-3xl md:text-4xl text-gray-600">Nadzor</h2>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center text-center md:text-left">
+                        <div class="md:w-1/2 md:pr-10 mb-4 md:mb-0">
+                            <h3 class="text-xl md:text-2xl text-gray-700 font-medium mb-2 border-b-2 border-gray-300 inline-block md:block w-auto pb-1">24 DESEMBER 2022</h3>
+                            <p class="text-xs text-gray-500 leading-relaxed text-justify md:text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                        <div class="md:w-1/2 md:pl-10 text-center md:text-right">
+                            <h2 class="font-serif-custom text-3xl md:text-4xl text-gray-600">Khitbah</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="border-gray-100 w-3/4 mx-auto morph-element">
+
+            <section class="py-16 px-6 text-center morph-element">
+                
+                <div class="flex justify-center mb-6 opacity-50">
+                    </div>
+                
+                <p class="text-gray-500 mb-6 text-sm">- Kirim Hadiah -</p>
+                <p class="text-xs md:text-sm text-gray-500 max-w-lg mx-auto mb-10 leading-relaxed">
+                    Kehadiran dan doa restu anda merupakan karunia yang sangat berharga bagi kami, namun apabila memberi hadiah adalah ungkapan tanda kasih anda, anda dapat mengirimkan ke rekening berikut. Jazakumullahu khayran
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12">
+                    <div class="flex flex-col items-center">
+                        <div class="w-32 h-12 bg-gray-100 mb-4 flex items-center justify-center text-xs text-gray-400 rounded overflow-hidden">
+                            <img src="img/Mandiri_logo.png" alt="Logo Mandiri" class="h-full object-contain" width="150" height="47" decoding="async">
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">A.n Alifia Putri .P</p>
+                        <p class="text-lg font-medium text-gray-700 mb-4" id="rek-mandiri">746 111 096 129</p>
+                        <button type="button" onclick="salinTeks('rek-mandiri')" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-1.5 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm">
+                            <i class="fa-regular fa-copy"></i> Salin
+                        </button>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="w-32 h-12 bg-gray-100 mb-4 flex items-center justify-center text-xs text-gray-400 rounded overflow-hidden">
+                            <img src="img/2560px-Bank_Central_Asia.svg.png" alt="Logo BCA" class="h-full object-contain" width="1600" height="501" decoding="async">
+                        </div>
+                        <p class="text-sm text-gray-600 mb-2">A.n Alifia Putri .P</p>
+                        <p class="text-lg font-medium text-gray-700 mb-4" id="rek-bca">887 654 999 876</p>
+                        <button type="button" onclick="salinTeks('rek-bca')" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-1.5 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm">
+                            <i class="fa-regular fa-copy"></i> Salin
+                        </button>
+                    </div>
+                </div>
+
+                <p class="text-xs text-gray-500 mb-6">Bagi yang ingin memberikan hadiah kepada pengantin, silahkan dikirim ke alamat berikut :</p>
+                <div class="bg-gray-50 rounded-xl p-6 max-w-lg mx-auto mb-4 border border-gray-100">
+                    <p class="text-sm font-medium text-gray-700 mb-2">PENERIMA : ALIFIA PUTRI PAMEDAR</p>
+                    <p class="text-xs text-gray-500 leading-relaxed" id="alamat-rumah">Perumahan Bumi Asri Raya Jl. Siliwangi No.12, Semarang, Jawa Tengah</p>
+                </div>
+                <button type="button" onclick="salinTeks('alamat-rumah')" class="inline-flex items-center gap-2 border border-gray-300 rounded-full px-5 py-1.5 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm bg-white">
+                    <i class="fa-regular fa-copy"></i> Salin
+                </button>
+            </section>
+
+            <section class="py-16 px-6 bg-gray-50/50 morph-element">
+                
+                <div class="flex justify-center mb-6 opacity-50">
+                    </div>
+                
+                <p class="text-center text-gray-500 mb-8 text-sm">- Kirim Ucapan dan Doa -</p>
+
+                <div class="max-w-2xl mx-auto">
+                    <form class="space-y-4 mb-10" data-invitalab-rsvp data-event-id="demo-minimalis-2">
+                        <div>
+                            <label for="rsvp-name-minimalis-2" class="block text-xs text-gray-600 mb-1">Nama</label>
+                            <input type="text" id="rsvp-name-minimalis-2" name="name" placeholder="Isikan Nama Anda" minlength="2" maxlength="80" autocomplete="name" required class="w-full border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gray-400 bg-white">
+                        </div>
+                        <div>
+                            <label for="rsvp-message-minimalis-2" class="block text-xs text-gray-600 mb-1">Pesan</label>
+                            <textarea id="rsvp-message-minimalis-2" name="message" rows="3" maxlength="500" placeholder="Berikan Ucapan Dan Doa Restu" class="w-full border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gray-400 bg-white"></textarea>
+                        </div>
+                        <div>
+                            <label for="rsvp-attendance-minimalis-2" class="block text-xs text-gray-600 mb-1">Konfirmasi Kehadiran</label>
+                            <select id="rsvp-attendance-minimalis-2" name="attendance" required class="w-full border border-gray-200 rounded-lg p-3 text-sm focus:outline-none focus:border-gray-400 bg-white text-gray-500">
+                                <option value="" selected disabled>Konfirmasi Kehadiran</option>
+                                <option value="hadir">Hadir</option>
+                                <option value="tidak_hadir">Tidak Hadir</option>
+                            </select>
+                        </div>
+                        <div class="text-center mt-6">
+                            <button type="submit" class="border border-gray-300 bg-white rounded-full px-8 py-2 text-xs text-gray-500 hover:bg-gray-100 transition shadow-sm">
+                                KIRIMKAN UCAPAN
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="h-64 overflow-y-auto scroll-ucapan pr-2 space-y-4 border-t border-gray-200 pt-6">
+                        <div class="bg-white p-4 rounded-xl border border-gray-100 flex gap-3 shadow-sm">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h4 class="font-semibold text-gray-700 text-sm">Tes</h4>
+                                    <span class="bg-gray-500 text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1"><i class="fa-solid fa-check text-[8px]"></i> Hadir</span>
+                                </div>
+                                <p class="text-xs text-gray-600">cek</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-gray-100 flex gap-3 shadow-sm">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h4 class="font-semibold text-gray-700 text-sm">tes</h4>
+                                    <span class="bg-gray-400 text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1"><i class="fa-solid fa-xmark text-[8px]"></i> Tidak Hadir</span>
+                                </div>
+                                <p class="text-xs text-gray-600">hai</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-4 rounded-xl border border-gray-100 flex gap-3 shadow-sm">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                                <i class="fa-solid fa-user text-gray-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h4 class="font-semibold text-gray-700 text-sm">anton</h4>
+                                    <span class="bg-gray-400 text-white text-[10px] px-2 py-0.5 rounded flex items-center gap-1"><i class="fa-solid fa-xmark text-[8px]"></i> Tidak Hadir</span>
+                                </div>
+                                <p class="text-xs text-gray-600">selamat menempuh hidup baru</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 px-6 text-center morph-element">
+                
+                <div class="flex justify-center mb-6 opacity-50">
+                    </div>
+
+                <p class="text-xs md:text-sm text-gray-500 max-w-2xl mx-auto mb-8 leading-relaxed">
+                    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan do'a restu kepada kami.
+                </p>
+
+                <p class="text-sm md:text-base font-semibold text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+                    "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu merasa tenang dan tentram kepadanya, dan dijadikan-Nya diantaramu rasa kasih dan sayang. Sesungguhnya pada yang demikian itu benar-benar terdapat tanda-tanda bagi kaum yang berfikir."<br>
+                    <span class="font-normal text-sm block mt-2">(QS. Ar-Rum: 21)</span>
+                </p>
+
+                <div class="flex items-center justify-center gap-4 py-6">
+                    <div class="h-px bg-gray-400 w-24"></div>
+                    <i class="fa-solid fa-heart text-gray-400"></i>
+                    <div class="h-px bg-gray-400 w-24"></div>
+                </div>
+
+                <p class="text-xs md:text-sm text-gray-500 mb-10 italic">Wassalamu'alaikum warahmatullahi wabarakatuh.</p>
+
+                <p class="text-xs text-gray-500 mb-2">Kami yang berbahagia,</p>
+                <h1 class="font-serif-custom text-4xl text-gray-700 mb-12">Davin & Alifia</h1>
+
+                <button type="button" onclick="scrollToTop()" class="w-10 h-10 rounded-full border border-gray-400 text-gray-500 flex items-center justify-center mx-auto hover:bg-gray-100 transition" aria-label="Kembali ke atas">
+                    <i class="fa-solid fa-chevron-up"></i>
+                </button>
+            </section>
+
+    <div id="toast-copy" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded shadow-lg text-sm opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+        Berhasil disalin!
+    </div>
+
+    <script>
+        // 1. Fungsi Buka Undangan (Menghilangkan Cover)
+        function bukaUndangan() {
+            const cover = document.getElementById('cover-screen');
+            cover.classList.add('hide-cover');
+            
+            // Kembalikan kemampuan scroll setelah cover dibuka
+            document.getElementById('main-body').style.overflowY = 'auto';
+
+            // Panggil animasi morphing tepat setelah undangan dibuka!
+            mulaiAnimasiMorph();
+            
+            // Mainkan lagu saat tombol ditekan
+            document.getElementById('bg-music').play()
+                .then(() => { isPlaying = true; })
+                .catch(() => { isPlaying = false; });
+        }
+
+        // 2. Fungsi Hitung Mundur (Countdown)
+        const targetDate = new Date("Jan 22, 2027 08:00:00").getTime(); 
+
+        const countdown = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }, 1000);
+
+        // 3. Fungsi Salin Teks ke Clipboard
+        function salinTeks(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            
+            InvitalabTemplate.copyText(textToCopy).then(() => {
+                showToast();
+            }).catch(err => {
+                alert('Gagal menyalin otomatis. Silakan salin manual: ' + textToCopy);
+            });
+        }
+
+        // 4. Fungsi memunculkan notifikasi (Toast) setelah salin
+        function showToast() {
+            const toast = document.getElementById('toast-copy');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        // 5. Fungsi Scroll Kembali ke Atas
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // --- Audio Control Logic ---
+        const audio = document.getElementById("bg-music"); // Memperbaiki ID agar sesuai dengan HTML
+        const audioBtnIcon = document.querySelector("#audioBtn i");
+        let isPlaying = false;
+
+        function toggleAudio() {
+            if (!audio.paused) {
+                audio.pause();
+                if(audioBtnIcon) {
+                    audioBtnIcon.classList.remove("fa-volume-high");
+                    audioBtnIcon.classList.add("fa-volume-xmark");
+                }
+                isPlaying = false;
+            } else {
+                audio.play().then(() => {
+                    if(audioBtnIcon) {
+                        audioBtnIcon.classList.remove("fa-volume-xmark");
+                        audioBtnIcon.classList.add("fa-volume-high");
+                    }
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log("Audio play failed due to browser policy", error);
+                    isPlaying = false;
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            InvitalabTemplate.applyGuestName('nama-tamu', 'Tamu Undangan');
+        });
+
+        // --- TAMBAHAN: 6. FUNGSI UNTUK ANIMASI MORPH SAAT DI-SCROLL ---
+        function mulaiAnimasiMorph() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    // Jika elemen masuk ke dalam pandangan layar (viewport)
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Opsional: Unobserve setelah elemen muncul, agar animasi tidak ngulang-ngulang
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { 
+                threshold: 0.1 // Animasi berjalan saat 10% dari elemen terlihat
+            });
+
+            // Pantau semua elemen yang memiliki class morph-element
+            const hiddenElements = document.querySelectorAll('.morph-element');
+            hiddenElements.forEach((el) => observer.observe(el));
+        }
+        // -------------------------------------------------------------
+    </script>
+    <script src="../../template-utils.js"></script>
+    <script src="../../rsvp/config.js"></script>
+    <script src="../../rsvp/client.js"></script>
+</body>
+</html>

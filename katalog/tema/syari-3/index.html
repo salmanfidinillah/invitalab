@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#7faabc">
+  <meta name="color-scheme" content="light only">
+  <title>Walimatul 'Urs Azkiya &amp; Rendra | Invitalab</title>
+  <link rel="icon" type="image/png" href="../../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="syari-3.css">
+  <script src="../../template-utils.js" defer></script>
+  <script src="../../rsvp/config.js" defer></script>
+  <script src="../../rsvp/client.js" defer></script>
+  <script src="syari-3.js" defer></script>
+</head>
+<body class="cover-open" data-template-mode="demo">
+  <audio id="bg-music" preload="none" loop>
+    <source src="../../musik/invitalab-ambient.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="invitation-cover" id="coverScreen" aria-labelledby="coverTitle">
+    <div class="cover-sky" aria-hidden="true">
+      <span class="sky-orbit orbit-a"></span>
+      <span class="sky-orbit orbit-b"></span>
+      <span class="sky-star star-a">✦</span>
+      <span class="sky-star star-b">✦</span>
+      <img class="cover-birds" src="img/WS-01-9 (1).png" alt="" width="532" height="149" decoding="async">
+      <div class="cover-arch">
+        <img src="img/WS-01-3.png" alt="Ilustrasi Azkiya dan Rendra" width="1080" height="1159" decoding="async">
+      </div>
+      <small class="cover-mark">A · R</small>
+    </div>
+    <div class="cover-panel">
+      <span class="eyebrow">Walimatul 'Urs</span>
+      <h1 id="coverTitle"><span>Azkiya</span><i>&amp;</i><span>Rendra</span></h1>
+      <p class="cover-date">Ahad · 31 Desember 2028</p>
+      <div class="guest-card">
+        <small>Kepada Bapak/Ibu/Saudara/i</small>
+        <strong id="guest-name">Tamu Undangan</strong>
+      </div>
+      <button class="primary-button" id="openInvitation" type="button">
+        <span>Buka undangan</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg>
+      </button>
+      <p class="cover-hint">Dengan menyebut nama Allah, mari membuka undangan ini.</p>
+    </div>
+  </div>
+
+  <header class="topbar interface-control">
+    <a class="monogram" href="#home" aria-label="Kembali ke pembuka">A<span>&amp;</span>R</a>
+    <nav aria-label="Navigasi undangan">
+      <a href="#couple">Mempelai</a>
+      <a href="#event">Acara</a>
+      <a href="#story">Kisah</a>
+      <a href="#wishes">RSVP</a>
+    </nav>
+    <div class="topbar-actions">
+      <button class="icon-button is-muted" id="music-control" type="button" aria-label="Putar atau jeda musik">
+        <svg class="music-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/></svg>
+        <svg class="music-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/><path d="m4 4 16 16"/></svg>
+      </button>
+      <button class="icon-button" id="fullscreenBtn" type="button" aria-label="Aktifkan atau keluar dari layar penuh">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="home">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <span class="floating-star hero-star-a" aria-hidden="true">✦</span>
+      <span class="floating-star hero-star-b" aria-hidden="true">✦</span>
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Bismillahirrahmanirrahim</span>
+        <p class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+        <h1>Azkiya <i>&amp;</i><br>Rendra</h1>
+        <p>Maha Suci Allah yang menciptakan makhluk-Nya berpasang-pasangan. Dengan penuh syukur, kami mengundang Anda untuk hadir dalam walimah kami.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#event"><span>Lihat detail acara</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg></a>
+          <a class="text-link" href="#couple">Mengenal mempelai <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-art reveal reveal-delay" data-parallax>
+        <div class="mihrab-frame">
+          <span class="mihrab-line line-one"></span>
+          <span class="mihrab-line line-two"></span>
+          <img src="img/WS-01-3.png" alt="Ilustrasi Azkiya dan Rendra" width="1080" height="1159" fetchpriority="high" decoding="async">
+        </div>
+        <div class="hero-note note-date"><small>Ahad</small><strong>31</strong><span>Des · 2028</span></div>
+        <div class="hero-note note-place"><b>Bogor</b><small>Jawa Barat</small></div>
+        <img class="hero-birds" src="img/WS-01-9 (1).png" alt="Ornamen burung" width="532" height="149" decoding="async">
+      </div>
+      <a class="scroll-cue" href="#couple" aria-label="Gulir ke profil mempelai"><span></span>Scroll</a>
+    </section>
+
+    <section class="section couple-section" id="couple">
+      <div class="section-shell">
+        <div class="section-heading centered reveal">
+          <img class="section-ornament" src="img/WS-01-4.png" alt="" width="500" height="500" loading="lazy" decoding="async">
+          <span class="eyebrow">Dengan ridho Allah</span>
+          <h2>Dua insan dalam<br><i>satu ikatan ibadah.</i></h2>
+          <p>Assalamu'alaikum Warahmatullahi Wabarakatuh. Ya Allah, semoga ridho-Mu tercurah mengiringi pernikahan kami.</p>
+        </div>
+        <div class="couple-grid">
+          <article class="person-card reveal">
+            <div class="person-photo woman-photo"><span class="arch-ring"></span><img src="img/ps.jpg" alt="Elyana Azkiya Nur" width="736" height="1104" loading="lazy" decoding="async"></div>
+            <div class="person-copy"><small>Putri</small><h3>Azkiya</h3><strong>Elyana Azkiya Nur</strong><p>Putri dari Bapak Nasrudin Hatta<br>&amp; Ibu Elma Muna</p></div>
+          </article>
+          <div class="couple-center reveal" aria-hidden="true"><span>و</span><i>&amp;</i></div>
+          <article class="person-card reveal reveal-delay">
+            <div class="person-photo man-photo"><span class="arch-ring"></span><img src="img/Ls.jpg" alt="Syahril Rendra Backhtiar" width="736" height="736" loading="lazy" decoding="async"></div>
+            <div class="person-copy"><small>Putra</small><h3>Rendra</h3><strong>Syahril Rendra Backhtiar</strong><p>Putra dari Bapak Sufian Jadin<br>&amp; Ibu Elmira Ghendis</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section event-section" id="event">
+      <div class="event-cloud cloud-a" aria-hidden="true"></div>
+      <div class="event-cloud cloud-b" aria-hidden="true"></div>
+      <div class="section-shell">
+        <div class="event-heading reveal">
+          <div><span class="eyebrow light">Menuju hari bahagia</span><h2>Dengan niat ibadah,<br><i>kami mengundang Anda.</i></h2></div>
+          <p>Kehadiran dan doa restu Anda menjadi kebahagiaan tersendiri bagi kami dan keluarga.</p>
+        </div>
+        <div class="countdown reveal" aria-label="Hitung mundur menuju acara">
+          <div><strong id="days">00</strong><span>Hari</span></div><i></i>
+          <div><strong id="hours">00</strong><span>Jam</span></div><i></i>
+          <div><strong id="minutes">00</strong><span>Menit</span></div><i></i>
+          <div><strong id="seconds">00</strong><span>Detik</span></div>
+        </div>
+        <div class="events-grid">
+          <article class="event-card reveal">
+            <span class="event-number">01</span><small>Akad nikah</small><h3>Ahad, 31 Desember 2028</h3><p>08.00 WIB — 10.00 WIB</p><div class="event-line"></div><strong>Auditorium Masjid Assalam</strong><span>Jalan Raya Bojongsari No.5, Bogor</span>
+          </article>
+          <article class="event-card featured reveal reveal-delay">
+            <span class="event-number">02</span><small>Walimatul 'Urs</small><h3>Ahad, 31 Desember 2028</h3><p>10.00 WIB — 15.00 WIB</p><div class="event-line"></div><strong>Auditorium Masjid Assalam</strong><span>Jalan Raya Bojongsari No.5, Gunung Putri, Bogor</span><div class="event-buttons"><a href="https://www.google.com/maps/search/?api=1&amp;query=Auditorium%20Masjid%20Assalam%2C%20Jalan%20Raya%20Bojongsari%20No.5%2C%20Bogor" target="_blank" rel="noopener noreferrer">Buka Maps <b>↗</b></a><a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Walimatul%20Urs&amp;dates=20281231T080000/20281231T150000&amp;details=Akad%20dan%20walimatul%20urs&amp;location=Auditorium%20Masjid%20Assalam%2C%20Bogor" target="_blank" rel="noopener noreferrer">Simpan tanggal <b>＋</b></a></div>
+          </article>
+        </div>
+        <article class="stream-card reveal">
+          <div class="stream-signal" aria-hidden="true"><span></span><span></span><i></i></div><div><small>Live streaming</small><h3>Hadir dari mana pun.</h3><p>Saksikan acara kami secara virtual melalui Instagram.</p></div><a href="https://www.instagram.com/elemenpress/" target="_blank" rel="noopener noreferrer" data-demo-link="true">@elemenpress <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section story-section" id="story">
+      <div class="section-shell story-layout">
+        <aside class="story-quote reveal">
+          <img src="img/WS-01-9 (1).png" alt="Ornamen burung" width="532" height="149" loading="lazy" decoding="async">
+          <span class="eyebrow">Q.S. Ar-Rum · 21</span>
+          <blockquote>“Dia menjadikan di antaramu rasa kasih dan sayang.”</blockquote>
+          <p>Setiap pertemuan memiliki waktunya. Ini adalah perjalanan kecil kami menuju satu tujuan yang sama.</p>
+        </aside>
+        <div class="timeline">
+          <article class="timeline-item reveal"><span>2015</span><div><small>Awal bertemu</small><h3>Sebuah kegiatan kampus.</h3><p>Kami pertama kali bertemu di acara peminatan kampus sebagai perwakilan dari divisi masing-masing.</p></div></article>
+          <article class="timeline-item reveal"><span>2017</span><div><small>Bertemu kembali</small><h3>Jalan yang bersinggungan.</h3><p>Setelah lama tidak bertemu, sebuah seminar profesional mempertemukan kami kembali di bidang yang sama.</p></div></article>
+          <article class="timeline-item reveal"><span>2023</span><div><small>Kesungguhan</small><h3>Niat baik kepada keluarga.</h3><p>Rendra menyampaikan keinginannya secara langsung kepada ayah Azkiya. Kami pun memulai persiapan untuk perjalanan baru.</p></div></article>
+          <article class="timeline-item reveal"><span>2028</span><div><small>InsyaaAllah</small><h3>Memulai ibadah terpanjang.</h3><p>Semoga Allah memberikan ketenangan, kasih sayang, dan keberkahan dalam keluarga kecil yang akan kami bangun.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gift-section" id="gift">
+      <div class="section-shell gift-layout">
+        <div class="gift-copy reveal"><span class="eyebrow light">Wedding gift</span><h2>Doa Anda adalah<br><i>hadiah yang utama.</i></h2><p>Tanpa mengurangi rasa hormat, tanda kasih dapat disampaikan melalui rekening atau alamat berikut.</p></div>
+        <div class="gift-cards">
+          <article class="bank-card reveal"><div class="bank-head"><span>mandiri</span><small>Wedding gift</small></div><i class="bank-chip"></i><strong id="rek-mandiri">123123123</strong><p>a.n. Elyana Azkiya Nur</p><button type="button" data-copy-target="rek-mandiri">Salin rekening <span>↗</span></button></article>
+          <article class="address-card reveal reveal-delay"><small>Kirim kado</small><h3>Elyana Azkiya Nur</h3><p id="alamat-kado">Jalan Raya Bojongsari No.5, Gunung Putri, Citeureup, Bogor, Jawa Barat</p><button type="button" data-copy-target="alamat-kado">Salin alamat <span>↗</span></button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wishes-section" id="wishes">
+      <div class="section-shell wishes-layout">
+        <div class="wishes-copy reveal">
+          <span class="eyebrow">RSVP &amp; wishes</span>
+          <h2>Kabarkan kehadiran,<br><i>titipkan doa terbaik.</i></h2>
+          <p class="prayer-arabic">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p>
+          <p>“Semoga Allah memberikan keberkahan padamu dan mengumpulkan kalian berdua dalam kebaikan.”</p>
+        </div>
+        <div class="rsvp-card reveal reveal-delay">
+          <form data-invitalab-rsvp data-event-id="demo-syari-3">
+            <div class="field"><label for="rsvp-name-syari-3">Nama</label><input type="text" id="rsvp-name-syari-3" name="name" minlength="2" maxlength="80" autocomplete="name" required placeholder="Nama lengkap"></div>
+            <div class="form-row"><div class="field"><label for="rsvp-attendance-syari-3">Kehadiran</label><select id="rsvp-attendance-syari-3" name="attendance" required><option value="" selected disabled>Pilih status</option><option value="hadir">Hadir</option><option value="tidak_hadir">Tidak hadir</option><option value="ragu">Masih ragu</option></select></div><div class="field"><label for="rsvp-guests-syari-3">Jumlah tamu</label><select id="rsvp-guests-syari-3" name="guestCount"><option value="1">1 orang</option><option value="2">2 orang</option><option value="3">3 orang</option><option value="4">4 orang</option></select></div></div>
+            <div class="field"><label for="rsvp-message-syari-3">Ucapan &amp; doa</label><textarea id="rsvp-message-syari-3" name="message" rows="4" maxlength="500" placeholder="Tulis ucapan dan doa"></textarea></div>
+            <button class="primary-button form-button" type="submit"><span>Kirim konfirmasi</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg></button>
+          </form>
+          <div class="sample-wish"><small>Contoh ucapan</small><blockquote>“Semoga menjadi keluarga yang sakinah, mawaddah, warahmah dan selalu dalam penjagaan Allah.”</blockquote><span>— Keluarga &amp; sahabat</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-section" id="closing">
+      <div class="closing-glow" aria-hidden="true"></div>
+      <img class="closing-birds" src="img/WS-01-9 (1).png" alt="" width="532" height="149" loading="lazy" decoding="async">
+      <div class="closing-copy reveal"><span class="eyebrow light">Jazakumullahu khairan</span><h2>Terima kasih atas<br><i>doa dan kehadirannya.</i></h2><p>Merupakan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p><strong>Azkiya <i>&amp;</i> Rendra</strong><small>© 2026 Invitalab · Preview template Syar'i 3</small></div>
+      <div class="closing-art reveal reveal-delay"><div class="closing-arch"><img src="img/WS-01-3.png" alt="Ilustrasi Azkiya dan Rendra" width="1080" height="1159" loading="lazy" decoding="async"></div></div>
+    </section>
+  </main>
+
+  <nav class="bottom-dock interface-control" aria-label="Navigasi cepat">
+    <a class="dock-item active" href="#home" data-section="home" aria-label="Beranda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 10 8-7 8 7v10h-6v-6h-4v6H4V10Z"/></svg><span>Home</span></a>
+    <a class="dock-item" href="#couple" data-section="couple" aria-label="Mempelai"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2.5 20c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M10.5 20c.4-4 2.2-6 5.5-6s5.1 2 5.5 6"/></svg><span>Mempelai</span></a>
+    <a class="dock-item" href="#event" data-section="event" aria-label="Acara"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18"/></svg><span>Acara</span></a>
+    <a class="dock-item" href="#story" data-section="story" aria-label="Kisah"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h11a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3V4Z"/><path d="M7 8h7M7 12h7"/></svg><span>Kisah</span></a>
+    <a class="dock-item" href="#wishes" data-section="wishes" aria-label="RSVP"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h9a4 4 0 0 1 4 4v8Z"/><path d="M8 9h8m-8 4h5"/></svg><span>RSVP</span></a>
+  </nav>
+</body>
+</html>
